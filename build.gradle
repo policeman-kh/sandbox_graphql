@@ -1,0 +1,47 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.0'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id "com.github.node-gradle.node" version "3.0.0-rc4"
+	id 'java'
+}
+
+group = 'sandbox'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	jcenter()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'io.micrometer:micrometer-registry-prometheus:1.6.0'
+
+	// https://github.com/graphql-java-kickstart/graphql-spring-boot
+	implementation 'com.graphql-java-kickstart:graphql-spring-boot-starter:8.0.0'
+	implementation 'com.graphql-java-kickstart:graphiql-spring-boot-starter:8.0.0'
+	runtimeOnly 'com.graphql-java-kickstart:graphiql-spring-boot-starter:8.0.1'
+
+	// To resolve NoClassDefFoundError.
+	implementation 'javax.websocket:javax.websocket-client-api:1.1'
+	implementation 'org.glassfish.tyrus.bundles:tyrus-standalone-client:1.12'
+	implementation 'org.glassfish.tyrus:tyrus-container-grizzly-client:1.12'
+
+	implementation "org.springframework.boot:spring-boot-starter-websocket";
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}

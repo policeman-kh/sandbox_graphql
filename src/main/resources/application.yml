@@ -1,0 +1,28 @@
+graphiql:
+  enabled: true
+  mapping: /graphiql
+  endpoint:
+    graphql: /graphql
+graphql:
+  servlet:
+    actuator-metrics: true
+
+logging:
+  level:
+    root: DEBUG
+
+# Can see metrics from /actuator/prometheus
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,prometheus
+  metrics:
+    distribution:
+      slo:
+        http:
+          server:
+            requests: 100ms, 200ms, 400ms
+      percentiles:
+        http.server.requests: 0.5, 0.75, 0.95, 0.99
+      percentiles-histogram.http.server.requests: true
