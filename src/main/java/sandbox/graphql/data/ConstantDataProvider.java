@@ -1,4 +1,4 @@
-package sandbox.graphql;
+package sandbox.graphql.data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +11,11 @@ import sandbox.graphql.model.Author;
 import sandbox.graphql.model.Book;
 
 @Component
-public class DataService {
+public class ConstantDataProvider implements DataProvider {
     private final List<Book> books;
     private final List<Author> authors;
 
-    public DataService() {
+    public ConstantDataProvider() {
         authors = new ArrayList<>();
         authors.add(new Author("1", "Taro", "Yamada", null));
         authors.add(new Author("2", "Test1", "TestTest", null));
@@ -50,8 +50,13 @@ public class DataService {
                     .orElse(null);
     }
 
+    @Override
+    public Author authorById(String authorId) {
+        return authorById(authorId, authors);
+    }
+
     @Nullable
-    public static Author authorById(String authorId, List<Author> authors) {
+    private static Author authorById(String authorId, List<Author> authors) {
         return authors.stream()
                       .filter(author -> author.getId().equals(authorId))
                       .findFirst()

@@ -7,9 +7,9 @@ graphql:
   servlet:
     actuator-metrics: true
 
-logging:
-  level:
-    root: DEBUG
+#logging:
+#  level:
+#    root: DEBUG
 
 # Can see metrics from /actuator/prometheus
 management:
