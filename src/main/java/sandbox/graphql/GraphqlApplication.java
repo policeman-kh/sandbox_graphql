@@ -12,17 +12,17 @@ import sandbox.graphql.processor.IBookProcessor;
 @SpringBootApplication
 public class GraphqlApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(GraphqlApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(GraphqlApplication.class, args);
+    }
 
-	@Bean
-	public DataProvider dataProvider(){
-		return new ConstantDataProvider();
-	}
+    @Bean
+    public DataProvider dataProvider() {
+        return new ConstantDataProvider();
+    }
 
-	@Bean
-	public IBookProcessor bookProcessor(){
-		return new BookInMemoryProcessor();
-	}
+    @Bean
+    public IBookProcessor bookProcessor() {
+        return new BookInMemoryProcessor();
+    }
 }

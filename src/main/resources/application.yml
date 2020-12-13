@@ -6,6 +6,7 @@ graphiql:
 graphql:
   servlet:
     actuator-metrics: true
+#    tracing-enabled: true
 
 #logging:
 #  level:
